@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="datepicker.min.css"> -->
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script> -->
+
+</head>
+<body>
+    <div class="main">
+        <h1>age calculator</h1>
+        <label for="birthdate">Enter your birthdate:</label><br>
+        <input type="date" id="birthdate">
+        <button id="calculateBtn">Calculate</button>
+
+        <p id="ageDisplay"></p>    
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+    <script>
+      const DateTime = luxon.DateTime;
+    
+      document.getElementById('calculateBtn').addEventListener('click', function () {
+        const birthInput = document.getElementById('birthdate').value;
+    
+        if (!birthInput) {
+          document.getElementById('ageDisplay').textContent = "Please enter your birthdate.";
+          return;
+        }
+    
+        const birthdate = DateTime.fromISO(birthInput);
+        const now = DateTime.now();
+    
+        if (!birthdate.isValid || birthdate > now) {
+          document.getElementById('ageDisplay').textContent = "Please enter a valid birthdate.";
+          return;
+        }
+    
+        const diff = now.diff(birthdate, ['years', 'months','days']).toObject();
+        const years = Math.floor(diff.years);
+        const months = Math.floor(diff.months);
+        const days = Math.floor(diff.days);
+    
+        document.getElementById('ageDisplay').textContent = 
+          `You are ${years} year${years !== 1 ? 's' : ''} , ${months} month${months !== 1 ? 's' : ''} and ${days} day${days !== 1 ? 's' : ''} old.`;
+      });
+    </script>
+    
+  
+</body>
+</html>

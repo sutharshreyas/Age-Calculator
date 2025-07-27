@@ -1,0 +1,44 @@
+body{
+display: flex;
+height: 100vh;
+}
+.main{
+margin: auto;
+display: grid;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  border: 2px solid;
+  padding: 20px;
+  /* align-items: center;
+  justify-content: center; */
+  text-transform: capitalize;
+}
+label{
+    text-align: left;
+    margin: 5px;
+}
+h1{
+    font-weight: lighter;
+}
+input{
+    margin: auto;
+    border: 2px solid;
+    border-radius: 5px;
+height: 30px;
+width: 97%;
+/* padding: 5px; */
+
+}
+button{
+background-color: rgb(62, 59, 59);
+color: white;
+height: 40px;
+border-radius: 5px;
+margin: auto;
+width: 100%;
+margin-top: 10px;
+}
+#agedisplay{
+    margin: auto;
+}
